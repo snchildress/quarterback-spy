@@ -13,4 +13,4 @@ functions:
     environment:
       SEATGEEK_API_KEY: ${ssm:SEATGEEK_API_KEY}
     events:
-      - schedule: rate(15 minutes)
+      - schedule: rate(10 minutes)
