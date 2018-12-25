@@ -18,7 +18,7 @@ def handler(event=None, context=None):
     # log each price in Slack
     print(marketplace + ' Cheapest Ticket: $' + lowest_price)
     if int(lowest_price) < config.MAX_AFFORDABLE_PRICE:
-      message = '@channel ' + marketplace + ' has an affordable ticket for $' + lowest_price + '!'
+      message = '<!channel> ' + marketplace + ' has an affordable ticket for $' + lowest_price + '!'
       _message_slack(message)
 
 def _message_slack(message):
