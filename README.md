@@ -2,7 +2,7 @@
 
 Quarterback Spy is a ticket marketplace polling service to find cheap tickets for sale at a given event
 
-## Support Features
+## Supported Features
 
 Quarterback Spy was created to find and alert on an affordable ticket to the New Orleans Saints 2018 NFC Championship game. As such, it polls the supported ticket marketplaces and logs the cheapest price
 
