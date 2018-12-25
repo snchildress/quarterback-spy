@@ -15,3 +15,6 @@ SEATGEEK_EVENT_ID = '4628040'
 
 # slack channel id
 SLACK_CHANNEL = os.environ.get('SLACK_CHANNEL', 'GF1BK650A')
+
+# affordable price max threshold
+MAX_AFFORDABLE_PRICE = os.environ['MAX_AFFORDABLE_PRICE']
