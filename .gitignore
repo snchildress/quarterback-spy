@@ -1,0 +1,8 @@
+# sensitive information
+*.env
+
+# dependencies
+/venv
+
+# cruft
+__pycache__
