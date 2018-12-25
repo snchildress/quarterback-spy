@@ -1,17 +1,20 @@
 service: quarterback-spy
 
+custom:
+  ENV: prod
+
 provider:
   name: aws
   runtime: python3.7
   profile: personal
-  stage: prod
+  stage: ${self:custom.ENV}
   region: us-east-1
 
 functions:
   poll:
     handler: lambda.handler
     environment:
-      ENV: prod
+      ENV: ${self:custom.ENV}
       SEATGEEK_API_KEY: ${ssm:SEATGEEK_API_KEY}
       SLACK_API_KEY: ${ssm:SLACK_API_KEY}
       SLACK_CHANNEL: ${ssm:SLACK_CHANNEL}
