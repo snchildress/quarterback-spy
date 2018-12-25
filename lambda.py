@@ -4,13 +4,18 @@ import requests
 
 
 def handler(event=None, context=None):
+  # create an empty dict to store lowest ticket prices
+  lowest_prices = {}
+
   # find cheapest seatgeek ticket
   response = requests.get(config.SEATGEEK_ENDPOINT.format(config.SEATGEEK_EVENT_ID))
   if response.ok:
     response_body = response.json()
-    lowest_price = response_body['stats']['lowest_price']
-    print('SeatGeek Cheapest Ticket: $' + str(lowest_price))
-  
+    lowest_prices['SeatGeek'] = response_body['stats']['lowest_price']
+
+  for marketplace, lowest_price in lowest_prices.items():
+    print(marketplace + ' Cheapest Ticket: $' + str(lowest_price))
+
   # post affordable ticket alert to Slack
   request_url = config.SLACK_ENDPOINT
   request_headers = {'Authorization': 'Bearer ' + config.SLACK_API_KEY}
