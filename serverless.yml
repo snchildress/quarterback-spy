@@ -3,11 +3,14 @@ service: quarterback-spy
 provider:
   name: aws
   runtime: python3.7
+  profile: personal
   stage: prod
   region: us-east-1
 
 functions:
   poll:
     handler: lambda.handler
+    environment:
+      SEATGEEK_API_KEY: ${ssm:SEATGEEK_API_KEY}
     events:
       - schedule: rate(15 minutes)
