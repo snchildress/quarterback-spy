@@ -19,7 +19,7 @@ Quarterback Spy was created to find and alert on an affordable ticket to the New
 
 ## Deployments
 
-Quarterback Spy is a serverless application hosted on AWS Lambda using the Serverlss Framework for deployment management
+Quarterback Spy is a serverless application hosted on AWS Lambda using the Serverless Framework for deployment management
 
 ### Deployment Set Up
 

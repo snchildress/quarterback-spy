@@ -13,7 +13,7 @@ def handler(event=None, context=None):
   lowest_prices = {}
   lowest_prices_message = 'Current cheapest Saints NFC Championship ticket prices:\n\n'
 
-  # find cheapest seatgeek ticket
+  # find cheapest SeatGeek ticket
   response = requests.get(config.SEATGEEK_ENDPOINT.format(config.SEATGEEK_EVENT_ID))
   if response.ok:
     response_body = response.json()
