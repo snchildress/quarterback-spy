@@ -5,5 +5,8 @@
 # dependencies
 /venv
 
+# deployments
+/.serverless
+
 # cruft
 __pycache__
