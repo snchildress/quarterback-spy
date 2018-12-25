@@ -13,5 +13,8 @@ functions:
     environment:
       ENV: prod
       SEATGEEK_API_KEY: ${ssm:SEATGEEK_API_KEY}
+      SLACK_API_KEY: ${ssm:SLACK_API_KEY}
+      SLACK_CHANNEL: ${ssm:SLACK_CHANNEL}
+      MAX_AFFORDABLE_PRICE: ${ssm:MAX_AFFORDABLE_PRICE}
     events:
       - schedule: rate(10 minutes)
