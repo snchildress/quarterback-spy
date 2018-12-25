@@ -17,4 +17,4 @@ SEATGEEK_EVENT_ID = '4628040'
 SLACK_CHANNEL = os.environ.get('SLACK_CHANNEL', 'GF1BK650A')
 
 # affordable price max threshold
-MAX_AFFORDABLE_PRICE = os.environ['MAX_AFFORDABLE_PRICE']
+MAX_AFFORDABLE_PRICE = int(os.environ['MAX_AFFORDABLE_PRICE'])
