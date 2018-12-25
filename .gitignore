@@ -3,3 +3,6 @@
 
 # dependencies
 /venv
+
+# cruft
+__pycache__
