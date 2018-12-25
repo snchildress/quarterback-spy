@@ -4,8 +4,9 @@ import requests
 
 
 def handler(event=None, context=None):
-  # create an empty dict to store lowest ticket prices
+  # create an empty dict to store lowest ticket prices and message for Slack
   lowest_prices = {}
+  lowest_prices_message = 'Current cheapest Saints NFC Championship ticket prices:\n\n'
 
   # find cheapest seatgeek ticket
   response = requests.get(config.SEATGEEK_ENDPOINT.format(config.SEATGEEK_EVENT_ID))
@@ -16,10 +17,16 @@ def handler(event=None, context=None):
   # iterate through the lowest prices to log and post affordable alert to Slack
   for marketplace, lowest_price in lowest_prices.items():
     # log each price in Slack
-    print(marketplace + ' Cheapest Ticket: $' + lowest_price)
+    message = marketplace + ': $' + lowest_price
+    print(message)
+    lowest_prices_message += message + '\n'
     if int(lowest_price) < config.MAX_AFFORDABLE_PRICE:
-      message = '<!channel> ' + marketplace + ' has an affordable ticket for $' + lowest_price + '!'
+      message = '<!channel> ' + marketplace + ' has an affordable NFC Championship ticket for $' + lowest_price + '!'
       _message_slack(message)
+  
+  # post all of the lowest prices to Slack
+  lowest_prices_message = lowest_prices_message[:-1] # remove the trailing new line
+  _message_slack(lowest_prices_message)
 
 def _message_slack(message):
   """
