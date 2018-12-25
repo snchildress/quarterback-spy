@@ -1,0 +1,13 @@
+service: quarterback-spy
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: prod
+  region: us-east-1
+
+functions:
+  poll:
+    handler: lambda.handler
+    events:
+      - schedule: rate(15 minutes)
