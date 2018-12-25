@@ -10,5 +10,7 @@ provider:
 functions:
   poll:
     handler: lambda.handler
+    environment:
+      SEATGEEK_API_KEY: ${ssm:SEATGEEK_API_KEY}
     events:
       - schedule: rate(15 minutes)
