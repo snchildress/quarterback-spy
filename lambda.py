@@ -4,6 +4,11 @@ import requests
 
 
 def handler(event=None, context=None):
+  """
+  AWS Lambda handler to get the lowest prices for the
+  NFC Championship game, post them to Slack, and alert
+  if the price is below the configured max threshold
+  """
   # create an empty dict to store lowest ticket prices and message for Slack
   lowest_prices = {}
   lowest_prices_message = 'Current cheapest Saints NFC Championship ticket prices:\n\n'
