@@ -32,7 +32,7 @@ def handler(event=None, context=None):
     if int(lowest_price) < config.MAX_AFFORDABLE_PRICE:
       message = '<!channel> ' + marketplace + ' has an affordable NFC Championship ticket for $' + lowest_price + '!'
       _message_slack(message)
-  
+
   # if it is currently the job closest to the top of the hour
   current_minute = datetime.now().minute
   if (current_minute < config.POLLING_RATE / 2) \
@@ -40,7 +40,7 @@ def handler(event=None, context=None):
     # post all of the lowest prices to Slack
     lowest_prices_message = lowest_prices_message[:-1] # remove the trailing new line
     _message_slack(lowest_prices_message)
-  
+
   # log the lowest prices as a JSON object
   logger.info(json.dumps(lowest_prices))
 
