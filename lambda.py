@@ -1,7 +1,13 @@
 import config
 
 from datetime import datetime
+import json
 import requests
+import logging
+
+# configure the logger to log anything at or above the DEBUG level
+logger = logging.getLogger()
+logging.basicConfig(level=logging.DEBUG)
 
 
 def handler(event=None, context=None):
@@ -22,10 +28,7 @@ def handler(event=None, context=None):
 
   # iterate through the lowest prices to log and post affordable alert to Slack
   for marketplace, lowest_price in lowest_prices.items():
-    # log each price in Slack
-    message = marketplace + ': $' + lowest_price
-    print(message)
-    lowest_prices_message += message + '\n'
+    lowest_prices_message += marketplace + ': $' + lowest_price + '\n'
     if int(lowest_price) < config.MAX_AFFORDABLE_PRICE:
       message = '<!channel> ' + marketplace + ' has an affordable NFC Championship ticket for $' + lowest_price + '!'
       _message_slack(message)
@@ -37,6 +40,9 @@ def handler(event=None, context=None):
     # post all of the lowest prices to Slack
     lowest_prices_message = lowest_prices_message[:-1] # remove the trailing new line
     _message_slack(lowest_prices_message)
+  
+  # log the lowest prices as a JSON object
+  logger.info(json.dumps(lowest_prices))
 
 def _message_slack(message):
   """
