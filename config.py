@@ -1,7 +1,4 @@
 import os
-import re
-import yaml
-
 
 # secrets
 ENV = os.environ.get('ENV', 'local')
@@ -21,9 +18,5 @@ SLACK_CHANNEL = os.environ.get('SLACK_CHANNEL', 'GF1BK650A')
 # affordable price max threshold
 MAX_AFFORDABLE_PRICE = int(os.environ['MAX_AFFORDABLE_PRICE'])
 
-# get schedule frequency in minutes
-with open('serverless.yml', 'r') as serverless:
-  serverless_config = yaml.load(serverless)
-  schedule = serverless_config['functions']['poll']['events'][0]['schedule']
-  rate = re.search('\((.*)\ ', schedule)
-  POLLING_RATE = int(rate.group(1))
+# job schedule frequency in minutes
+POLLING_RATE = 10
