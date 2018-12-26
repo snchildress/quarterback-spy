@@ -7,7 +7,7 @@ import logging
 
 # configure the logger to log anything at or above the DEBUG level
 logger = logging.getLogger()
-logging.basicConfig(level=logging.DEBUG)
+logger.setLevel(logging.DEBUG)
 
 
 def handler(event=None, context=None):
