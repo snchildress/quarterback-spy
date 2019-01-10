@@ -1,5 +1,6 @@
 # sensitive information
 *.env
+*.env.yml
 !example.env
 
 # dependencies
