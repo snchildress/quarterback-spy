@@ -9,6 +9,7 @@ Quarterback Spy was created to find and alert on an affordable ticket to the New
 ### Supported Ticket Marketplaces
 
 - SeatGeek
+- Ticket City
 
 ## Getting Started
 
@@ -24,7 +25,7 @@ Quarterback Spy is a serverless application hosted on AWS Lambda using the Serve
 ### Deployment Set Up
 
 1. Configure your AWS account's `aws_access_key_id` and `aws_secret_access_key` as the `[personal]` profile in `~/.aws/credentials`
-2. Set all of your production env vars in a `prod.env` file and upload these to AWS SSM Param Store using `./set-env-vars prod`
+2. Set all of your production environment variables in `prod.env.yml`
 3. Install the Serverless Framework: `npm install -g serverless`
 
-If you add any new environment variables, reset all of your production variables using `./set-env-vars prod` once again. This must be done before a deployment as Lambda env vars are configured by the Serverless Framework at deployment time, not run time. Once you've set up the deployment process, deploy to your production environment with `make deploy`
+Deploy to your production environment with `make deploy`

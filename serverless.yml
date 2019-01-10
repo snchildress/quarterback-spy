@@ -15,9 +15,10 @@ functions:
     handler: lambda.handler
     environment:
       ENV: ${self:custom.ENV}
-      SEATGEEK_API_KEY: ${ssm:SEATGEEK_API_KEY}
-      SLACK_API_KEY: ${ssm:SLACK_API_KEY}
-      SLACK_CHANNEL: ${ssm:SLACK_CHANNEL}
-      MAX_AFFORDABLE_PRICE: ${ssm:MAX_AFFORDABLE_PRICE}
+      SEATGEEK_API_KEY: ${file(prod.env.yml):SEATGEEK_API_KEY}
+      TICKET_CITY_API_KEY: ${file(prod.env.yml):TICKET_CITY_API_KEY}
+      SLACK_API_KEY: ${file(prod.env.yml):SLACK_API_KEY}
+      SLACK_CHANNEL: ${file(prod.env.yml):SLACK_CHANNEL}
+      MAX_AFFORDABLE_PRICE: ${file(prod.env.yml):MAX_AFFORDABLE_PRICE}
     events:
       - schedule: rate(10 minutes)
