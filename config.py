@@ -15,6 +15,9 @@ SLACK_ENDPOINT = 'https://slack.com/api/chat.postMessage'
 SEATGEEK_EVENT_ID = '4628040'
 TICKET_CITY_EVENT_ID = '2911133'
 
+# estimated fees in USD
+TICKET_CITY_ESTIMATED_FEES = 150
+
 # slack channel id
 SLACK_CHANNEL = os.environ.get('SLACK_CHANNEL', 'GF1BK650A')
 

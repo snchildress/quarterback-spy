@@ -33,7 +33,7 @@ def handler(event=None, context=None):
   if response.ok:
     response_body = response.json()
     prices = [ticket['ListPrice'] for ticket in response_body]
-    lowest_price = round(min(prices))
+    lowest_price = round(min(prices)) + config.TICKET_CITY_ESTIMATED_FEES
     lowest_prices['Ticket City'] = str(lowest_price)
 
   # iterate through the lowest prices to log and post affordable alert to Slack
