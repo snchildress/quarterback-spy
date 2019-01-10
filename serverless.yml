@@ -16,6 +16,7 @@ functions:
     environment:
       ENV: ${self:custom.ENV}
       SEATGEEK_API_KEY: ${file(prod.env.yml):SEATGEEK_API_KEY}
+      TICKET_CITY_API_KEY: ${file(prod.env.yml):TICKET_CITY_API_KEY}
       SLACK_API_KEY: ${file(prod.env.yml):SLACK_API_KEY}
       SLACK_CHANNEL: ${file(prod.env.yml):SLACK_CHANNEL}
       MAX_AFFORDABLE_PRICE: ${file(prod.env.yml):MAX_AFFORDABLE_PRICE}
