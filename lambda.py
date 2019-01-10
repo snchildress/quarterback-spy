@@ -26,6 +26,16 @@ def handler(event=None, context=None):
     response_body = response.json()
     lowest_prices['SeatGeek'] = str(response_body['stats']['lowest_price'])
 
+  # find cheapest Ticket City ticket
+  url = config.TICKET_CITY_ENDPOINT.format(config.TICKET_CITY_EVENT_ID)
+  headers = {'X-TcAffKey': config.TICKET_CITY_API_KEY}
+  response = requests.get(url, headers=headers)
+  if response.ok:
+    response_body = response.json()
+    prices = [ticket['ListPrice'] for ticket in response_body]
+    lowest_price = round(min(prices))
+    lowest_prices['Ticket City'] = str(lowest_price)
+
   # iterate through the lowest prices to log and post affordable alert to Slack
   for marketplace, lowest_price in lowest_prices.items():
     lowest_prices_message += marketplace + ': $' + lowest_price + '\n'
