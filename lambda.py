@@ -42,6 +42,8 @@ def handler(event=None, context=None):
     if int(lowest_price) < config.MAX_AFFORDABLE_PRICE:
       message = '<!channel> ' + marketplace + ' has an affordable NFC Championship ticket for $' + lowest_price + '!'
       _message_slack(message)
+      _message_slack(message, config.SECOND_SLACK_API_KEY,
+                     config.SECOND_SLACK_CHANNEL)
 
   # if it is currently the job closest to the top of the hour
   current_minute = datetime.now().minute
@@ -50,19 +52,22 @@ def handler(event=None, context=None):
     # post all of the lowest prices to Slack
     lowest_prices_message = lowest_prices_message[:-1] # remove the trailing new line
     _message_slack(lowest_prices_message)
+    _message_slack(lowest_prices_message, config.SECOND_SLACK_API_KEY,
+                   config.SECOND_SLACK_CHANNEL)
 
   # log the lowest prices as a JSON object
   logger.info(json.dumps(lowest_prices))
 
-def _message_slack(message):
+def _message_slack(message, api_key=config.SLACK_API_KEY,
+                   channel_id=config.SLACK_CHANNEL):
   """
   Internal function to post a given message to the
   configured Slack channel
   """
   url = config.SLACK_ENDPOINT
-  headers = {'Authorization': 'Bearer ' + config.SLACK_API_KEY}
+  headers = {'Authorization': 'Bearer ' + api_key}
   body = {
-    'channel': config.SLACK_CHANNEL,
+    'channel': channel_id,
     'text': str(message),
   }
   requests.post(url, headers=headers, json=body)
