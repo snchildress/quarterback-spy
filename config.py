@@ -12,9 +12,9 @@ SEATGEEK_ENDPOINT = 'https://api.seatgeek.com/2/events/{}?client_id=' + SEATGEEK
 TICKET_CITY_ENDPOINT = 'https://api.ticketcity.com/affiliate/events/{}/tickets'
 SLACK_ENDPOINT = 'https://slack.com/api/chat.postMessage'
 
-# event ids for the Saints NFC Championship game
-SEATGEEK_EVENT_ID = '4628040'
-TICKET_CITY_EVENT_ID = '2911133'
+# event ids for the desired event
+SEATGEEK_EVENT_ID = '5325585'
+TICKET_CITY_EVENT_ID = '3524680'
 
 # estimated fees in USD
 TICKET_CITY_ESTIMATED_FEES = 150
