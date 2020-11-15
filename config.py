@@ -3,28 +3,20 @@ import os
 # secrets
 ENV = os.environ.get('ENV', 'local')
 SEATGEEK_API_KEY = os.environ['SEATGEEK_API_KEY']
-TICKET_CITY_API_KEY = os.environ['TICKET_CITY_API_KEY']
 SLACK_API_KEY = os.environ['SLACK_API_KEY']
-SECOND_SLACK_API_KEY = os.environ.get('SECOND_SLACK_API_KEY')
 
 # api endpoints
 SEATGEEK_ENDPOINT = 'https://api.seatgeek.com/2/events/{}?client_id=' + SEATGEEK_API_KEY
-TICKET_CITY_ENDPOINT = 'https://api.ticketcity.com/affiliate/events/{}/tickets'
 SLACK_ENDPOINT = 'https://slack.com/api/chat.postMessage'
 
 # event ids for the desired event
-SEATGEEK_EVENT_ID = '5325585'
-TICKET_CITY_EVENT_ID = '3524680'
-
-# estimated fees in USD
-TICKET_CITY_ESTIMATED_FEES = 150
+SEATGEEK_EVENT_ID = '5325587'
 
 # slack channel id
 SLACK_CHANNEL = os.environ.get('SLACK_CHANNEL', 'GF1BK650A')
-SECOND_SLACK_CHANNEL = os.environ.get('SECOND_SLACK_CHANNEL', 'GFDHJ6YFN')
 
 # affordable price max threshold
 MAX_AFFORDABLE_PRICE = int(os.environ['MAX_AFFORDABLE_PRICE'])
 
 # job schedule frequency in minutes
-POLLING_RATE = 10
+POLLING_RATE = 5

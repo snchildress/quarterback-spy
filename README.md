@@ -9,7 +9,6 @@ Quarterback Spy was created to find and alert on an affordable ticket to the New
 ### Supported Ticket Marketplaces
 
 - SeatGeek
-- Ticket City
 
 ## Getting Started
 
