@@ -10,7 +10,7 @@ SEATGEEK_ENDPOINT = 'https://api.seatgeek.com/2/events/{}?client_id=' + SEATGEEK
 SLACK_ENDPOINT = 'https://slack.com/api/chat.postMessage'
 
 # event ids for the desired event
-SEATGEEK_EVENT_ID = '5325587'
+SEATGEEK_EVENT_ID = os.environ['SEATGEEK_EVENT_ID']
 
 # slack channel id
 SLACK_CHANNEL = os.environ.get('SLACK_CHANNEL', 'GF1BK650A')
