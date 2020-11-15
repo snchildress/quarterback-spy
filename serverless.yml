@@ -2,6 +2,8 @@ service: quarterback-spy
 
 custom:
   ENV: prod
+  pythonRequirements:
+    dockerizePip: true
 
 provider:
   name: aws
@@ -16,11 +18,16 @@ functions:
     environment:
       ENV: ${self:custom.ENV}
       SEATGEEK_API_KEY: ${file(prod.env.yml):SEATGEEK_API_KEY}
-      TICKET_CITY_API_KEY: ${file(prod.env.yml):TICKET_CITY_API_KEY}
       SLACK_API_KEY: ${file(prod.env.yml):SLACK_API_KEY}
-      SECOND_SLACK_API_KEY: ${file(prod.env.yml):SECOND_SLACK_API_KEY}
       SLACK_CHANNEL: ${file(prod.env.yml):SLACK_CHANNEL}
-      SECOND_SLACK_CHANNEL: ${file(prod.env.yml):SECOND_SLACK_CHANNEL}
       MAX_AFFORDABLE_PRICE: ${file(prod.env.yml):MAX_AFFORDABLE_PRICE}
     events:
-      - schedule: rate(10 minutes)
+      - schedule: rate(5 minutes)
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**

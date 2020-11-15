@@ -5,6 +5,7 @@
 
 # dependencies
 /venv
+/node_modules
 
 # deployments
 /.serverless
