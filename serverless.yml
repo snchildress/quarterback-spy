@@ -2,6 +2,8 @@ service: quarterback-spy
 
 custom:
   ENV: prod
+  pythonRequirements:
+    dockerizePip: true
 
 provider:
   name: aws
@@ -21,3 +23,11 @@ functions:
       MAX_AFFORDABLE_PRICE: ${file(prod.env.yml):MAX_AFFORDABLE_PRICE}
     events:
       - schedule: rate(5 minutes)
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**

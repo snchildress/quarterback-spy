@@ -23,8 +23,10 @@ Quarterback Spy is a serverless application hosted on AWS Lambda using the Serve
 
 ### Deployment Set Up
 
+You'll need to have Docker installed on your machine to build prod with the required dependencies
+
 1. Configure your AWS account's `aws_access_key_id` and `aws_secret_access_key` as the `[personal]` profile in `~/.aws/credentials`
 2. Set all of your production environment variables in `prod.env.yml`
-3. Install the Serverless Framework: `npm install -g serverless`
+3. Install the Serverless Framework and Python dependencies plugin: `npm i`
 
-Deploy to your production environment with `make deploy`
+Deploy to your production environment with `serverless deploy`
